@@ -16,8 +16,8 @@ public:
         {
             k=nums[k];
             i=nums[i];
-            if(i==k) break;
+            if(i==k) return i;
         }
-        return i;
+       
     }
 };
