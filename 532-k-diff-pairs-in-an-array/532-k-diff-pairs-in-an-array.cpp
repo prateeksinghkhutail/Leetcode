@@ -3,19 +3,21 @@ public:
     int findPairs(vector<int>& nums, int k) {
         int count=0;
         set<int>s;
-        sort(nums.begin(),nums.end());
+        map<int,int>m;
         for(int i=0;i<nums.size();i++)
         {
-            int t=i+1;
-            int key=nums[i]+k;
-            if(binary_search(nums.begin()+t,nums.end(),key)>0)
-            {
-                s.insert(nums[i]);
-            }
-                
+            m[nums[i]]++;
+            s.insert(nums[i]);
         }
-        return s.size();
+        set<int>::iterator it;
+        for(it=s.begin();it!=s.end();it++)
+        {
+            if(k>0 && m.find((*it)+k)!=m.end()|| k==0 && m[(*it)]>1)
+            {
+                count++;
+            }
+        }
+        return count;
        
     }
 };
-//complexity nlogn for sort and //nlogn for binary search
