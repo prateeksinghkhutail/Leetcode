@@ -10,7 +10,7 @@ class Solution{
 	{
 	    int m=1000000007;
 	    int n=N;
-	    uint64_t c[n+1];
+	    unsigned long int c[n+1];
 	    c[0]=1;
 	    c[1]=1;
 	    for(int i=2;i<=n;i++)
