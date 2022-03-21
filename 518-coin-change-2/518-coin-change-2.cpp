@@ -8,14 +8,14 @@ public:
         
     }
     
-    int ways(int amount,vector<int>coins,int ci, unordered_map<string,int>&map,int dp[302][5002])
+    int ways(int amount,vector<int>coins,int ci,unordered_map<string,int>&map,int dp[302][5002])
     {
         if(amount==0)
             return 1;
         
         if(ci>=coins.size())
             return 0;
-        //string ck=to_string(ci)+"-"+to_string(amount);
+        string ck=to_string(ci)+"-"+to_string(amount);
         //if(map.find(ck)!=map.end())
         //    return map[ck];
         if(dp[ci][amount]!=-1)
@@ -28,6 +28,7 @@ public:
         int notconsider=ways(amount,coins,ci+1,map,dp);
         //map[ck]=consider+notconsider;
         dp[ci][amount]=consider+notconsider;
+        //return map[ck];
         return dp[ci][amount];
         
     }
