@@ -12,26 +12,23 @@ class Solution{
     public:
     int maxLen(vector<int>&A, int n)
     {   
-        unordered_map<int,int>m;
-        int pre=0;
-        int len=0;
+        // Your code here
+        unordered_map<int,int>map;
+        map.insert(make_pair(0,-1));
+        int sum=0;
+        int ans=0;
         for(int i=0;i<n;i++)
         {
-            pre+=A[i];
-            if(pre==0)
+            sum+=A[i];
+            if(map.find(sum)!=map.end())
             {
-                len=max(len,i+1);
-            }
-            if(m.find(pre)!=m.end())
-            {
-                len=max(len,i-m[pre]);
-                
+                ans=max(ans,i-map[sum]);
             }
             else{
-                m[pre]=i;
+                map[sum]=i;
             }
         }
-        return len;
+        return ans;
     }
 };
 
