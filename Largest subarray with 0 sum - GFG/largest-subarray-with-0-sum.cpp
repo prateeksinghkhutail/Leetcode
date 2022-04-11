@@ -14,12 +14,16 @@ class Solution{
     {   
         // Your code here
         unordered_map<int,int>map;
-        map.insert(make_pair(0,-1));
+        
         int sum=0;
         int ans=0;
         for(int i=0;i<n;i++)
         {
             sum+=A[i];
+            if(sum==0)
+            {
+                ans=max(ans,i+1);
+            }
             if(map.find(sum)!=map.end())
             {
                 ans=max(ans,i-map[sum]);
