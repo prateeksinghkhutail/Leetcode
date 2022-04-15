@@ -7,13 +7,16 @@ public:
         for(int i=0;i<s.length();i++)
         {
             
-            while(release<i && map.find(s[i])!=map.end())
-            {
+           // while(release<i && map.find(s[i])!=map.end())
+           // {
                 
-                map.erase(s[release]);
-                release+=1;
+           //     map.erase(s[release]);
+           //     release+=1;
                 
-            }
+           //}
+            
+            if(map.find(s[i])!=map.end() && map[s[i]]>=release)
+                release=map[s[i]]+1;
             map[s[i]]=i;
             answer=max(answer,i-release+1);
             
