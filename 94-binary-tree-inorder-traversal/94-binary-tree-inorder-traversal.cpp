@@ -12,19 +12,32 @@
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int>v;
-        traversal(root,v);
-        return v;
-        
+        stack<TreeNode*>s;
+        vector<int>ans;
+        if(root==NULL)
+            return ans;
+        addleftsubTree(root,s);
+        while(!s.empty())
+        {
+            TreeNode* cn=s.top();
+            s.pop();
+            ans.push_back(cn->val);
+            if(cn->right!=NULL)
+            {
+                addleftsubTree(cn->right,s);
+            }
+        }
+        return ans;
     }
     
-    void traversal(TreeNode* root,vector<int>&v)
+    void addleftsubTree(TreeNode* cn,stack<TreeNode*>&s)
     {
-        if(!root)
-            return;
-        traversal(root->left,v);
-        v.push_back(root->val);
-        traversal(root->right,v);
+        s.push(cn);
+        while(cn->left!=NULL)
+        {
+            s.push(cn->left);
+            cn=cn->left;
+        }
         return;
     }
 };
