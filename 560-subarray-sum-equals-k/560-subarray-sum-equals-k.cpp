@@ -1,19 +1,28 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-       
-        int n=nums.size();
-        map<int,int>m; //map to store the frequency of prefix sum of array
-        int count=0;
-        int pre=0; //prefix sum
-        for(int i=0;i<n;i++)
+        int prefix=0;
+        int ans=0;
+        unordered_map<int,int>map;
+        map[0]=1;
+        
+        for(int i=0;i<nums.size();i++)
         {
-            pre+=nums[i];
-            if(pre==k)count++;  
-            if(m.find(pre-k)!=m.end())  //if we find pre-k in map that means that subarray have sum k; 
-                count+=m[pre-k];   //counting the occurrence of pre-k 
-            m[pre]++;  //adding the prefix sum to map
+            prefix+=nums[i];
+            if(map.find(prefix-k)!=map.end())
+            {
+                ans+=map[prefix-k];
+                
+                
+            }
+            if(map.find(prefix)!=map.end())
+            {
+                map[prefix]++;
+            }
+            else{
+                map[prefix]=1;
+            }
         }
-        return count;
+        return ans;
     }
 };
