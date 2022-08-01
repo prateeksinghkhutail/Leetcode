@@ -1,23 +1,19 @@
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        unordered_map<string,int>map;
-        return solve(m,n,0,0,map);
+        vector<vector<int>>dp(m+1,vector<int>(n+1,-1));
+        int num=countpaths(0,0,m,n,dp);
+        
+        return num;
+        
     }
     
-    int solve(int m, int n,int cr, int cl,unordered_map<string,int>&map)
+    
+    int countpaths(int i,int j,int m,int n, vector<vector<int>>&dp)
     {
-        if(cr==m-1 && cl==n-1)
-            return 1;
-        if(cr>=m || cl>=n)
-            return 0;
-        string ck=to_string(cr)+"-"+to_string(cl);
-        if(map.find(ck)!=map.end())
-            return map[ck];
-        
-        int right=solve(m,n,cr,cl+1,map);
-        int down=solve(m,n,cr+1,cl,map);
-        return map[ck]=right+down;
-        
+        if(i==(m-1)&&j==(n-1))return 1;
+        if(i>=m||j>=n)return 0;
+        if(dp[i][j]!=-1) return dp[i][j];
+        else return dp[i][j]= countpaths(i+1,j,m,n,dp)+countpaths(i,j+1,m,n,dp);
     }
 };
