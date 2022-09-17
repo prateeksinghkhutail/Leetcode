@@ -7,10 +7,10 @@ public:
         if(nums.empty())return v;
         for(int i=0;i<n-3;i++)
         {
-            int target1=target-nums[i];
+            long target1=target-nums[i];
             for(int j=i+1;j<n-2;j++)
             {
-                int target2=target1-nums[j];
+                long target2=target1-nums[j];
                 int front=j+1;
                 int back=n-1;
                 while(front<back)
