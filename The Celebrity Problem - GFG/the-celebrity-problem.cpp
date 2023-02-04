@@ -1,10 +1,10 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial template for C++
 
 #include<bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 //User function template for C++
 
 class Solution 
@@ -21,7 +21,8 @@ class Solution
             {
                 if(M[i][j]==1)
                 {
-                    count[i]--,count[j]++;
+                    count[j]++;
+                    count[i]--;
                 }
             }
         }
@@ -34,7 +35,7 @@ class Solution
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main()
 {
@@ -57,4 +58,5 @@ int main()
 
     }
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
